@@ -4,6 +4,7 @@
  * @author Julio Arakaki 
  * @version 1.0 2023/05/15
  */
+package InterfaceListas;
 public class No<T>{
     /**
      * Atributos

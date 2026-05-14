@@ -4,7 +4,8 @@
  * @author Guilherme Pequeneza 
  * @version 1.0 2023/05/15
  */
-public class ListaLigadaCircular {
+package InterfaceListas;
+public class ListaLigadaCircular<T> implements IListaLigada<T>{
     No inicio, fim;
     int qtdNos;
 
@@ -23,7 +24,7 @@ public class ListaLigadaCircular {
      *
      * @param inicio No inicio da lista ligada
      */
-    private void setInicio(No inicio){
+    public void setInicio(No inicio){
         this.inicio = inicio;
     }
 
@@ -50,7 +51,7 @@ public class ListaLigadaCircular {
      *
      * @param fim No fim da lista ligada
      */
-    private void setFim(No fim){
+    public void setFim(No fim){
         this.fim = fim;
     }
 
