@@ -5,12 +5,13 @@
  * @author (seu nome) 
  * @version (um número da versão ou uma data)
  */
+import InterfaceListas.*;
 public class TesteRemoverMeio
 {
     public static void main(){
         
-        ListaLigadaCircular l = new ListaLigadaCircular();
-        
+        IListaLigada l;
+        l = new ListaLigadaCircular();
         
         l.inserirFim(2);
         l.inserirFim(3);
@@ -18,6 +19,7 @@ public class TesteRemoverMeio
         l.inserirFim(5);
         l.inserirFim(6);
         l.inserirFim(7);
+        
         l.inserirFim(8);
         l.inserirFim(9);
         l.inserirFim(10);
