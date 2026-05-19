@@ -193,14 +193,19 @@ public class ListaLigadaCircular<T> implements IListaLigada<T>{
                 setFim(null);
             }
             else{
-                for(int i = 2;i < n; i++){
-                    ant = ant.getProximo();
+                if(n == 0)
+                    achou = ant;
+                else{
+                    for(int i = 1;i < n; i++){
+                        ant = ant.getProximo();
+                    }
+                    
+                    achou = ant.getProximo();            
+                    if(achou == inicio){
+                        setInicio(achou.getProximo());
+                    }
+                    ant.setProximo(achou.getProximo());   
                 }
-                achou = ant.getProximo();            
-                if(achou == inicio){
-                    setInicio(achou.getProximo());
-                }
-                ant.setProximo(achou.getProximo());                
             }
             setQtdNos(getQtdNos() - 1);
             obj = achou.getConteudo(); 
