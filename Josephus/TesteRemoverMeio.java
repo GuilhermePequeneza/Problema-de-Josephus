@@ -10,8 +10,7 @@ public class TesteRemoverMeio
 {
     public static void main(){
         
-        IListaLigada l;
-        l = new ListaLigadaCircular();
+        IListaLigada l = new ListaLigadaCircular();
         
         l.inserirFim(2);
         l.inserirFim(3);
@@ -25,18 +24,35 @@ public class TesteRemoverMeio
         l.inserirFim(10);
         l.inserirInicio(1);
         
+        int indiceAlvo;
+
+        int passo = 1;
+
+        int posicaoAtual = 1;
+
+        int tamanhoAtual = l.getQtdNos();
+
         System.out.println("Lista: " + l);
-        
-        l.removerMeio(11);
-        
-        System.out.println("Lista: " + l);
-        
-        l.removerMeio(3);
-        
-        System.out.println("Lista: " + l);
-        
-        l.removerMeio(3);
-        
-        System.out.println("Lista: " + l);
+
+        while(tamanhoAtual != 1){
+
+            System.out.println(l.getQtdNos());            
+
+            indiceAlvo = posicaoAtual + passo - 1;            
+
+            l.removerMeio(indiceAlvo);
+
+            System.out.println("Lista: " + l);
+
+            posicaoAtual = indiceAlvo % tamanhoAtual;  
+
+            if(posicaoAtual == 0)
+
+                posicaoAtual = 1;
+
+            tamanhoAtual = l.getQtdNos();            
+
+        }
+ 
     }
 }
