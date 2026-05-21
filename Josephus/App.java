@@ -12,53 +12,72 @@ public class App
     public static void main(String args[])
     {
         //vamo usar a porra da entrada do swing
-        
-        JFrame J = new JFrame(); // meu Frame de Janela Principal
-        JButton B = new JButton("Botao do negocio"); // Um botao
-        JLabel La = new JLabel(); // Uma Label, Texto/Iamgem
-        
+        int Linhas = 5,Colunas = 5;
+            
         
         //------------------------------------------ MEU FRAME 
-        
+        JFrame J = new JFrame(); // meu Frame de Janela Principal    
         J.setTitle("Janela do Simpson Gamer");
-        J.setSize(420, 420); //TAMNHO SIZE
-        J.setLocationRelativeTo(null); //SETO NO CENTRO
-        
+        J.setSize(1000, 700); //TAMNHO SIZE
+        J.setLocationRelativeTo(null); //SETO NO CENTRO DA TELA
         J.setResizable(false); // NAO PODE AUMENTAR TAMANHO
-        J.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //FECHA AO CLICAR X
-
-         // J.setIconImage(Im.getImage()); MANO EU SETEI A FOTO COMO ICONE DA JANELA QUE FODA
-        J.getContentPane().setBackground(Color.black); //BOTEI COR NO FUNDO
-        
-        
-        //-------------------------------------- MEU PAINEL
-        
-        JPanel painel = new JPanel();
-        JPanel painel2 = new JPanel();
-        JPanel painel3 = new JPanel();
-        
-        painel.setBackground(Color.WHITE); //setando cor do fundo
-        painel.setBounds(0,0,250,250); // x,y,horizontal,vertical
-        painel.setLayout(new GridBagLayout()); // PESQUISAR COMO FUNCIONA O GRIDLAYOUT MAS ELE CENTRALIZA  A LABEL E ACHO QUE SERVE PARA AS IMAGENS IGUAL
-        // ImageIcon Im = new ImageIcon();  to sem imagem no momento
-        
-        //------------------------------------------LABEL - TEXTO DENTRO DO PAINEL
-        La.setText("UMA JANELA DE TESTES");
-        // La.setHorinzontalTextPosition(JLabel.CENTER); //DEFINO A LABEL NO CENTRO, MAS USANDO A JLabel?
-        La.setFont(new Font("Arial", Font.BOLD, 10)); // 32 é o tamanho do texto
-        // La.setIcon(Im);
-        
-        
+        J.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //FECHA AO CLICAR X, porque o padrao só esconde
+        J.getContentPane().setBackground(Color.black); //BOTEI COR NO FUNDO, mas n adianta pq meu fundo vai ser o do painel abaixo
+        //---------------------------------------------------
 
 
-        
-        //Pra rodar tem que chegar no setVisible
-        painel.add(La);
-        
-            
-        J.add(painel);
-        J.add(painel2);
-        J.add(painel3);
+        //-------------------------------- PAINEL PRINCIPAL
+        JPanel painelPrincipal = new JPanel(new BorderLayout());
+        painelPrincipal.setBackground(Color.BLACK);
+
+        //-------------------------------- CONTAINER CENTRAL
+        // Isso evita o grid gigante
+        JPanel painelCentro = new JPanel(new FlowLayout(
+                FlowLayout.CENTER,
+                0,
+                120
+        ));
+
+        painelCentro.setBackground(Color.BLACK);
+
+        //-------------------------------- PAINEL DO JOGO
+        JPanel painelJogo = new JPanel();
+
+        painelJogo.setLayout(new GridLayout(
+                Linhas,
+                Colunas,
+                15, // espaço horizontal
+                15  // espaço vertical
+        ));
+
+        painelJogo.setBackground(Color.BLACK);
+
+        for(int i = 1; i <= Linhas * Colunas; i++)
+        {
+            JLabel numero = new JLabel("" + i);
+
+            // centraliza texto
+            numero.setHorizontalAlignment(SwingConstants.CENTER);
+
+            // tamanho fixo
+            numero.setPreferredSize(new Dimension(50,50));
+
+            // deixa visível
+            numero.setOpaque(true);
+            numero.setBackground(Color.DARK_GRAY);
+            numero.setForeground(Color.WHITE);
+
+            // fonte menor
+            numero.setFont(new Font("Arial", Font.BOLD, 20));
+
+            painelJogo.add(numero);
+        }
+
+        painelCentro.add(painelJogo);
+        painelPrincipal.add(painelCentro, BorderLayout.CENTER);
+
+        //------------------------- final 
+        J.add(painelPrincipal);
         J.setVisible(true);
     }
 }
