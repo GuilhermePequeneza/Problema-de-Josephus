@@ -1,3 +1,5 @@
+ 
+
 import InterfaceListas.*;
 /**
  * Escreva uma descrição da classe JosephusRegras aqui.
