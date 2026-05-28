@@ -1,5 +1,3 @@
-import InterfaceListas.*;
-
 /**
  * JosephusRegras — encapsula a lógica do Problema de Josephus.
  * Utiliza uma ListaLigadaCircular para simular as eliminações.
