@@ -25,27 +25,26 @@ import java.util.Set;
  */
 public class JosephusApp extends JFrame {
 
-    // ─── Simulação ────────────────────────────────────────────────────
+    //Simulação
     private JosephusRegras regras;
     private int totalPessoas;
     private int passoK;
     private int velocidadeMs;
 
-    // ─── Labels do círculo (índice = número da pessoa - 1) ────────────
+    //Labels do círculo
     private final List<JLabel> slots = new ArrayList<>();
     private final Set<Integer> eliminados = new HashSet<>();
 
-    // ─── Componentes UI ───────────────────────────────────────────────
+    // Componentes UI
     private JButton btnIniciar, btnPausar;
     private JTextField fieldQtd, fieldK, fieldVel;
     private JLabel lblStatus;
     private JLabel lblInfo;
     private JPanel painelCirculo;
 
-    // ─── Worker ───────────────────────────────────────────────────────
+    // Worker
     private SwingWorker<Void, Object[]> worker;
 
-    // ─────────────────────────────────────────────────────────────────
     /**
      * Construtor: monta todos os painéis e exibe a janela.
      */
@@ -57,7 +56,7 @@ public class JosephusApp extends JFrame {
         setVisible(true);
     }
 
-    // ─── 1. Janela principal ──────────────────────────────────────────
+    // Janela principal
     /**
      * Configura propriedades gerais da janela: tamanho, título, layout e cor de fundo.
      */
@@ -71,7 +70,7 @@ public class JosephusApp extends JFrame {
         getContentPane().setBackground(Color.DARK_GRAY);
     }
 
-    // ─── 2. Barra superior ───────────────────────────────────────────
+    //  Barra superior 
     /**
      * Constrói a barra superior contendo os botões Iniciar, Parar e o botão de fechar.
      */
@@ -107,7 +106,7 @@ public class JosephusApp extends JFrame {
         btnPausar.addActionListener(e -> cancelarSimulacao());
     }
 
-    // ─── 3. Área central ─────────────────────────────────────────────
+    // Área central
     /**
      * Constrói a área central com o círculo de pessoas e os labels de status.
      */
@@ -140,7 +139,7 @@ public class JosephusApp extends JFrame {
         add(centro, BorderLayout.CENTER);
     }
 
-    // ─── 4. Barra inferior ───────────────────────────────────────────
+    // Barra inferior
     /**
      * Constrói o painel lateral direito que exibe a sequência de eliminados
      * e o sobrevivente ao término da simulação.
@@ -170,7 +169,7 @@ public class JosephusApp extends JFrame {
         fieldVel.getDocument().addDocumentListener(dl);
     }
 
-    // ─── 5. Habilitar botão quando todos os campos estão preenchidos ──
+    // Habilitar botão quando todos os campos estão preenchidos
     /**
      * Constrói a barra inferior com os três campos de configuração da simulação.
      * Ativa o botão Iniciar somente quando todos os campos estiverem preenchidos.
@@ -183,7 +182,7 @@ public class JosephusApp extends JFrame {
         btnPausar.setEnabled(ok);
     }
 
-    // ─── 6. Desenha círculo de N pessoas ─────────────────────────────
+    //  Desenha círculo de N pessoas
     /**
      * Habilita o botão Iniciar somente quando os três campos de entrada
      * estiverem preenchidos com algum conteúdo.
@@ -224,7 +223,7 @@ public class JosephusApp extends JFrame {
         painelCirculo.repaint();
     }
 
-    // ─── 7. Inicia a simulação via SwingWorker ────────────────────────
+    // Inicia a simulação via SwingWorker 
     /**
      * Lê os parâmetros dos campos, valida-os, inicializa a lógica de Josephus
      * e executa a simulação em uma thread de fundo (SwingWorker).
@@ -341,7 +340,7 @@ public class JosephusApp extends JFrame {
         worker.execute();
     }
 
-    // ─── 8. Cancela simulação ─────────────────────────────────────────
+    // CANCELA SIMULACAO
 
     /**
      * Cancela a Simulacao
@@ -352,8 +351,7 @@ public class JosephusApp extends JFrame {
         }
     }
 
-    // ─── 9. Bloqueia/libera campos durante a simulação ────────────────
-
+    // Bloqueia/libera campos durante a simulação
     /**
      * Enquanto a simulacao ocorre bloqueia a edicao de informacoes
      *
@@ -369,7 +367,7 @@ public class JosephusApp extends JFrame {
         fieldVel.setBackground(cor);
     }
 
-    // ─── Auxiliares ───────────────────────────────────────────────────
+    //AUXILIAR
     private JPanel criarCampoRotulado(String textoRotulo, JTextField campo) {
         JPanel painel = new JPanel(new BorderLayout(0, 3));
         painel.setBackground(Color.DARK_GRAY);
@@ -398,7 +396,7 @@ public class JosephusApp extends JFrame {
         return btn;
     }
 
-    // ─── Ponto de entrada ─────────────────────────────────────────────
+    // Ponto de entrada
     public static void main(String[] args) {
         SwingUtilities.invokeLater(JosephusApp::new);
     }
