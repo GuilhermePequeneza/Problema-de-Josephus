@@ -4,8 +4,12 @@ import InterfaceListas.*;
  * JosephusRegras — encapsula a lógica do Problema de Josephus.
  * Utiliza uma ListaLigadaCircular para simular as eliminações.
  *
- * @author (seu nome)
- * @version 1.1
+ * @author Felipe Estima
+ * @author Guilherme Pequeneza
+ * @author Igor Dias
+ * @author Thierry Nadjarian 
+ * 
+ * @version 26/05/26
  */
 public class JosephusRegras {
     private IListaLigada l;

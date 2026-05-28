@@ -1,8 +1,12 @@
 /**
  * No de uma lista ligada.
  * 
- * @author Julio Arakaki 
- * @version 1.0 2023/05/15
+ * @author Felipe Estima
+ * @author Guilherme Pequeneza
+ * @author Igor Dias
+ * @author Thierry Nadjarian 
+ * 
+ * @version 26/05/26
  */
 package InterfaceListas;
 public class No<T>{

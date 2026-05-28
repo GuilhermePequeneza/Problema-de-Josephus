@@ -1,8 +1,12 @@
 /**
  * ListaLigadaCircular. Ed para Lista Ligada Circular
  *
+ * @author Felipe Estima
  * @author Guilherme Pequeneza
- * @version 1.1 2023/05/15
+ * @author Igor Dias
+ * @author Thierry Nadjarian 
+ * 
+ * @version 26/05/26
  */
 package InterfaceListas;
 public class ListaLigadaCircular<T> implements IListaLigada<T> {
@@ -23,6 +27,11 @@ public class ListaLigadaCircular<T> implements IListaLigada<T> {
 
     private void setQtdNos(int qtdNos) { this.qtdNos = qtdNos; }
 
+    /**
+     * Verifica se esta vazia os nos e retorna
+     *
+     * @return Quantidade de Nos
+     */
     public boolean estaVazia() {
         return getQtdNos() == 0 && getInicio() == null && getFim() == null;
     }
@@ -41,6 +50,11 @@ public class ListaLigadaCircular<T> implements IListaLigada<T> {
         setQtdNos(getQtdNos() + 1);
     }
 
+    /**
+     * Dado um elemento coloca ele no fim
+     *
+     * @param Elemento a ser inserido no Fim
+     */
     public void inserirFim(Object elem) {
         No novo = new No(elem);
         if (estaVazia()) {
@@ -55,6 +69,11 @@ public class ListaLigadaCircular<T> implements IListaLigada<T> {
         setQtdNos(getQtdNos() + 1);
     }
 
+    /**
+     * Remove do inicio
+     *
+     * @return Objeto removido
+     */
     public Object removerInicio() {
         if (estaVazia()) return null;
         No aux = getInicio();
@@ -69,6 +88,11 @@ public class ListaLigadaCircular<T> implements IListaLigada<T> {
         return aux.getConteudo();
     }
 
+    /**
+     * Remove do fim
+     *
+     * @return Objeto removido
+     */
     public Object removerFim() {
         if (estaVazia()) return null;
         No aux;

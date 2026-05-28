@@ -2,8 +2,12 @@
 /**
  * Escreva a descrição da interface IListaLigada aqui.
  * 
- * @author (seu nome aqui) 
- * @version (um número da versão ou data aqui)
+ * @author Felipe Estima
+ * @author Guilherme Pequeneza
+ * @author Igor Dias
+ * @author Thierry Nadjarian 
+ * 
+ * @version 26/05/26
  */
 package InterfaceListas;
 public interface IListaLigada<T>

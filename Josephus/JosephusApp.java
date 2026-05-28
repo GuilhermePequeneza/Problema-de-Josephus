@@ -10,17 +10,18 @@ import java.util.Set;
 /**
  * JosephusApp — Interface gráfica para o Problema de Josephus.
  *
- * Substitui MatrizApp como ponto de entrada da aplicação.
- * Usa JosephusRegras (que usa ListaLigadaCircular internamente)
- * para simular as eliminações passo a passo com animação visual.
- *
+ * 
  * Estrutura de layout:
  *   - Barra superior: Iniciar | Pausar | ✕
  *   - Centro: círculo de pessoas + label de status
  *   - Barra inferior: 3 campos de entrada
  *
- * @author (seu nome)
- * @version 1.2
+ * @author Felipe Estima
+ * @author Guilherme Pequeneza
+ * @author Igor Dias
+ * @author Thierry Nadjarian 
+ * 
+ * @version 26/05/26
  */
 public class JosephusApp extends JFrame {
 
@@ -45,6 +46,9 @@ public class JosephusApp extends JFrame {
     private SwingWorker<Void, Object[]> worker;
 
     // ─────────────────────────────────────────────────────────────────
+    /**
+     * Construtor: monta todos os painéis e exibe a janela.
+     */
     public JosephusApp() {
         construirJanela();
         construirBarraSuperior();
@@ -54,6 +58,9 @@ public class JosephusApp extends JFrame {
     }
 
     // ─── 1. Janela principal ──────────────────────────────────────────
+    /**
+     * Configura propriedades gerais da janela: tamanho, título, layout e cor de fundo.
+     */
     private void construirJanela() {
         setTitle("Problema de Josephus");
         setSize(1000, 700);
@@ -65,6 +72,9 @@ public class JosephusApp extends JFrame {
     }
 
     // ─── 2. Barra superior ───────────────────────────────────────────
+    /**
+     * Constrói a barra superior contendo os botões Iniciar, Parar e o botão de fechar.
+     */
     private void construirBarraSuperior() {
         JPanel topo = new JPanel(new BorderLayout());
         topo.setBackground(Color.DARK_GRAY);
@@ -98,6 +108,9 @@ public class JosephusApp extends JFrame {
     }
 
     // ─── 3. Área central ─────────────────────────────────────────────
+    /**
+     * Constrói a área central com o círculo de pessoas e os labels de status.
+     */
     private void construirAreaCentral() {
         JPanel centro = new JPanel(new BorderLayout());
         centro.setBackground(Color.BLACK);
@@ -128,6 +141,10 @@ public class JosephusApp extends JFrame {
     }
 
     // ─── 4. Barra inferior ───────────────────────────────────────────
+    /**
+     * Constrói o painel lateral direito que exibe a sequência de eliminados
+     * e o sobrevivente ao término da simulação.
+     */
     private void construirBarraInferior() {
         JPanel inferior = new JPanel(new GridLayout(1, 3, 8, 0));
         inferior.setBackground(Color.DARK_GRAY);
@@ -154,6 +171,10 @@ public class JosephusApp extends JFrame {
     }
 
     // ─── 5. Habilitar botão quando todos os campos estão preenchidos ──
+    /**
+     * Constrói a barra inferior com os três campos de configuração da simulação.
+     * Ativa o botão Iniciar somente quando todos os campos estiverem preenchidos.
+     */
     private void verificarCampos() {
         boolean ok = !fieldQtd.getText().trim().isEmpty()
                 && !fieldK.getText().trim().isEmpty()
@@ -163,6 +184,10 @@ public class JosephusApp extends JFrame {
     }
 
     // ─── 6. Desenha círculo de N pessoas ─────────────────────────────
+    /**
+     * Habilita o botão Iniciar somente quando os três campos de entrada
+     * estiverem preenchidos com algum conteúdo.
+     */
     private void desenharCirculo(int n) {
         painelCirculo.removeAll();
         slots.clear();
@@ -200,6 +225,11 @@ public class JosephusApp extends JFrame {
     }
 
     // ─── 7. Inicia a simulação via SwingWorker ────────────────────────
+    /**
+     * Lê os parâmetros dos campos, valida-os, inicializa a lógica de Josephus
+     * e executa a simulação em uma thread de fundo (SwingWorker).
+     * Cada eliminação é publicada para a EDT atualizar a UI.
+     */
     private void iniciarSimulacao() {
         if (worker != null && !worker.isDone()) return;
 
@@ -312,6 +342,10 @@ public class JosephusApp extends JFrame {
     }
 
     // ─── 8. Cancela simulação ─────────────────────────────────────────
+
+    /**
+     * Cancela a Simulacao
+     */
     private void cancelarSimulacao() {
         if (worker != null && !worker.isDone()) {
             worker.cancel(true);
@@ -319,6 +353,12 @@ public class JosephusApp extends JFrame {
     }
 
     // ─── 9. Bloqueia/libera campos durante a simulação ────────────────
+
+    /**
+     * Enquanto a simulacao ocorre bloqueia a edicao de informacoes
+     *
+     * @param editavel
+     */
     private void bloquearCampos(boolean editavel) {
         fieldQtd.setEditable(editavel);
         fieldK.setEditable(editavel);

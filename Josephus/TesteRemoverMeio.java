@@ -3,8 +3,12 @@ import InterfaceListas.*;
 /**
  * TesteRemoverMeio — testa as operações de remoção da ListaLigadaCircular.
  *
- * @author (seu nome)
- * @version 1.1
+ * @author Felipe Estima
+ * @author Guilherme Pequeneza
+ * @author Igor Dias
+ * @author Thierry Nadjarian 
+ * 
+ * @version 26/05/26
  */
 public class TesteRemoverMeio {
     public static void main(String[] args) {
